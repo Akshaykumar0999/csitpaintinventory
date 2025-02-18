@@ -1,0 +1,64 @@
+header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #6c6c71;
+    border-bottom: 1px solid #b5b5b5;
+}
+.nav-bar-container {
+    width: 15%;
+}
+.header-section-one-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-section-one-sub {
+    display: none;
+}
+.header-section-two-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-profile-image-card {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid #b5b5b5;
+}
+.header-profile-image {
+    height: 100%;
+    width: 100%;
+}
+.header-theme-change-card {
+    height: 30px;
+    border-left: 1px solid #b5b5b5;
+    border-right: 1px solid #b5b5b5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px 0px 12px;
+    margin: 0px 10px 0px 10px;
+}
+.header-sections-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-grow: 1;
+    padding: 16px;
+}
+
+@media screen and (min-width: 821px) {
+    .header-section-one-sub  {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: #6c6c71;
+    }
+}

@@ -1,0 +1,18 @@
+*{ 
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.paint-inventory-main-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.not-authorized-styles {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e55353
+}

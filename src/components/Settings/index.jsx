@@ -11,41 +11,44 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
+import SettingsItem from "../SettingsItem";
 
 const settingsTabsList = [
   {
     id: 1,
     name: "Type-Settings",
     icon: <MdOutlineDisplaySettings style={{ marginRight: "5px" }} />,
+    styles: '',
   },
 
   {
     id: 2,
     name: "Profile",
     icon: <MdOutlineDisplaySettings style={{ marginRight: "5px" }} />,
+    styles: '',
   },
 
   {
     id: 3,
     name: "Bussiness",
     icon: <MdOutlineDisplaySettings style={{ marginRight: "5px" }} />,
+    styles: '',
   },
 
   {
     id: 4,
     name: "Themes",
     icon: <MdOutlineDisplaySettings style={{ marginRight: "5px" }} />,
+    styles: '',
   },
 ];
 
 const Settings = () => {
   const data = useContext(NavMenuContext);
   const [typeList, setTypeList] = useState([]);
-  const [activeTab, setActiveTab] = useState(settingsTabsList[0].id);
+  const [activeTab, setActTab] = useState(settingsTabsList[0].id);
   const [isEdited, setIsEdited] = useState(false);
   const [actId, setActId] = useState(0);
-  const activeStyles =
-    activeTab === 1 ? "settings-tablist-item-active" : "settings-tablist-item";
   const [type, setType] = useState({ name: "", addedby: "", modifiedby: "" });
   const handleTypes = (e) => {
     const { value, name } = e.target;
@@ -105,7 +108,6 @@ const Settings = () => {
     try {
       const res = await api.put(`/companyType/${actId}`, newType);
       const resData = res.data.result[0];
-      console.log(resData);
       if (res.status === 200) {
         setTypeList(
           typeList.map((item) => {
@@ -356,6 +358,10 @@ const Settings = () => {
     setActId(id);
     setIsEdited(true);
   };
+
+  const updateActiveTab = (id) => {
+    setActTab(id);
+  };
   return (
     <div className="main-container-card">
       {data.openNav && <Navbar />}
@@ -370,14 +376,12 @@ const Settings = () => {
         <main className="content-main-container">
           <ul className="settings-tablist-card">
             {settingsTabsList.map((each) => (
-              <li
+              <SettingsItem
+                details={each}
                 key={each.id}
-                className={activeStyles}
-                onClick={() => setActiveTab(each.id)}
-              >
-                {each.icon}
-                {each.name}
-              </li>
+                updateActiveTab={updateActiveTab}
+                isActive= {activeTab === each.id}
+              />
             ))}
           </ul>
           <div className="settings-details-card">{settingsDetails()}</div>
